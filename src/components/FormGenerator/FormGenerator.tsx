@@ -44,7 +44,6 @@ const InputWrapper = ({
   inputTypeMap,
   getComponentSpecificProps,
   errors,
-  key,
   formState,
 }: any) => {
   const Component = inputTypeMap[config.type];
@@ -53,7 +52,7 @@ const InputWrapper = ({
 
   return (
     <div>
-      <Component {...props} error={error} key={key} />
+      <Component {...props} error={error} />
     </div>
   );
 };
