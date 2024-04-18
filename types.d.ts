@@ -13,6 +13,7 @@ import { useFormData as FormDataHook } from "./dist/hooks/useFormData";
 export * from "./src/components/Button/types";
 export * from "./src/components/Dropdown/types";
 export * from "./src/components/FormGenerator/types";
+export * from "./src/components/FormGenerator/constants";
 export * from "./src/components/Select/types";
 export * from "./src/hooks/useFormErrors/types";
 export * from "./src/models/common";
