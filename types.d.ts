@@ -2,8 +2,7 @@ import React from "react";
 import { ButtonProps } from "./src/components/Button/types";
 import { SelectProps } from "./src/components/Select/types";
 import { DropdownProps } from "./src/components/Dropdown/types";
-import { FormGeneratorProps, InputTypes } from "./src/components/FormGenerator/types";
-import {Option} from './src/models/common'
+import { FormGeneratorProps } from "./src/components/FormGenerator/types";
 
 import { ValidatorFn } from "./src/models/common";
 
@@ -11,11 +10,12 @@ import { useFormErrors as ErrorsHook } from "./dist/hooks/useFormErrors/useFormE
 
 import { useFormData as FormDataHook } from "./dist/hooks/useFormData";
 
-export {
-  InputTypes,
-  ButtonProps,
-  Option
-}
+export * from "./src/components/Button/types";
+export * from "./src/components/Dropdown/types";
+export * from "./src/components/FormGenerator/types";
+export * from "./src/components/Select/types";
+export * from "./src/hooks/useFormErrors/types";
+export * from "./src/models/common";
 
 export class Button extends React.Component<ButtonProps> {}
 
