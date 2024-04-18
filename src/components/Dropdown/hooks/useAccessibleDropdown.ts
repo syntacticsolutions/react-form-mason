@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Option } from "../types";
+import { Option } from "../../../models/common";
 
 export const useAccessibleDropdown = (
   list: Option[],

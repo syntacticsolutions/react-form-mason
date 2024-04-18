@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 
 export const useClickAwayHandler = (visible: boolean, onClosed: () => void) => {
-  const dropdownRef = useRef(document.createElement("ul"));
+  const elementRef = useRef(document.createElement("ul"));
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         event.target &&
-        dropdownRef.current &&
-        !dropdownRef.current?.contains(event.target as Node)
+        elementRef.current &&
+        !elementRef.current?.contains(event.target as Node)
       ) {
         onClosed();
         document.removeEventListener("click", handleClickOutside);
@@ -24,5 +24,5 @@ export const useClickAwayHandler = (visible: boolean, onClosed: () => void) => {
     };
   }, [visible]);
 
-  return { dropdownRef };
+  return { elementRef };
 };

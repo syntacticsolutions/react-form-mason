@@ -1,15 +1,21 @@
 import { Option } from "../../models/common";
 import Input from "../Input/Input";
 import { Select } from "../Select/Select";
+import { FormGenerator } from "./FormGenerator";
+export { Arr } from "../Array/Arr";
 
 export enum InputTypes {
   STRING = "STRING",
   SELECT = "SELECT",
+  OBJECT = "OBJECT",
+  ARRAY = "ARRAY",
 }
 
 export const inputMap = {
   [InputTypes.STRING]: Input,
   [InputTypes.SELECT]: Select,
+  [InputTypes.OBJECT]: FormGenerator,
+  [InputTypes.ARRAY]: Arr,
 };
 
 export interface FormGeneratorProps<T extends Record<string, any>> {
@@ -20,19 +26,32 @@ export interface FormGeneratorProps<T extends Record<string, any>> {
   formState: T;
 }
 
-export type FGConfig<T extends BaseConfig> = T extends InputConfig
-  ? InputConfig
-  : SelectConfig;
+export type FGConfig = InputConfig | SelectConfig | ObjectConfig | ArrayConfig;
 
 type BaseConfig = {
   path: string;
   label: string;
-  placeholder: string;
-  type: InputTypes;
 };
 
-interface InputConfig extends BaseConfig {}
+export interface InputConfig extends BaseConfig {
+  placeholder: string;
+  type: InputTypes.STRING
+}
 
-interface SelectConfig extends BaseConfig {
+export interface SelectConfig extends BaseConfig {
   options: Option[];
+  placeholder: string;
+  type: InputTypes.SELECT
+}
+
+export interface ObjectConfig {
+  config: FGConfig[];
+  path: string;
+  type: InputTypes.OBJECT;
+}
+
+export interface ArrayConfig {
+  config: FGConfig[];
+  path: string;
+  type: InputTypes.ARRAY;
 }

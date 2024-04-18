@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export const FormGenerator = ({
   config,
-  inputTypeMap = inputMap,
+  inputTypeMap,
   onUpdated = (data: Record<string, any>) => {},
   errors = {},
   formState,
@@ -21,7 +21,7 @@ export const FormGenerator = ({
         <InputWrapper
           formState={formState}
           config={config}
-          inputTypeMap={inputTypeMap}
+          inputTypeMap={inputTypeMap || inputMap}
           getComponentSpecificProps={getComponentSpecificProps}
           errors={errors}
           key={key}
