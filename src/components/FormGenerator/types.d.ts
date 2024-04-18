@@ -24,6 +24,7 @@ export interface FormGeneratorProps<T extends Record<string, any>> {
   onUpdated?: (formData: T) => void;
   errors?: Record<string, boolean>;
   formState: T;
+  runningPath: string
 }
 
 export type FGConfig = InputConfig | SelectConfig | ObjectConfig | ArrayConfig;

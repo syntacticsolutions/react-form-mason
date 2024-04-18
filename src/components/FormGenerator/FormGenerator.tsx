@@ -10,10 +10,18 @@ export const FormGenerator = ({
   onUpdated = (data: Record<string, any>) => {},
   errors = {},
   formState,
+  runningPath = "",
 }: FormGeneratorProps<any>) => {
   const { ...setters } = useFormData(formState, onUpdated);
 
-  const getComponentSpecificProps = usePropGetter(formState, setters);
+  const getComponentSpecificProps = usePropGetter(
+    formState,
+    setters,
+    runningPath,
+    inputTypeMap || inputMap,
+    onUpdated,
+    errors
+  );
 
   return (
     <div>
@@ -37,7 +45,7 @@ const InputWrapper = ({
   getComponentSpecificProps,
   errors,
   key,
-  formState
+  formState,
 }: any) => {
   const Component = inputTypeMap[config.type];
   const props = getComponentSpecificProps(config);

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { DetailedHTMLProps, InputHTMLAttributes, useCallback } from "react";
 import {
   FGConfig,
   InputTypes,
@@ -6,36 +6,51 @@ import {
   SelectConfig,
   ObjectConfig,
   ArrayConfig,
+  FormGeneratorProps,
 } from "../types";
+import { SelectProps } from "../../Select/types";
 
 export const usePropGetter = (
   state: Record<string, any>,
-  { setInput, setSelect }: any
+  { setInput, setSelect }: any,
+  currentPath: string,
+  inputTypeMap: any,
+  onUpdated: any,
+  errors: any
 ) => {
   const getComponentSpecificProps = useCallback(
-    (config: FGConfig): Record<string, any> => {
+    (config: FGConfig) => {
       if (isStringInput(config)) {
-        return {
+        const props: DetailedHTMLProps<
+          InputHTMLAttributes<HTMLInputElement>,
+          HTMLInputElement
+        > = {
           onChange: setInput(config.path),
           value: state[config.path],
           ...config,
         };
-      }
-      else if (isSelectInput(config)) {
-        return {
+        return props;
+      } else if (isSelectInput(config)) {
+        const props: SelectProps = {
           onChange: setSelect(config.path),
           value: state[config.path],
           ...config,
         };
-      }
-      else if (isObjectInput(config)) {
-        return {
+        return props;
+      } else if (isObjectInput(config)) {
+        const props: FormGeneratorProps<any> = {
           config: config.config,
+          runningPath: currentPath + config.path,
+          formState: state,
+          inputTypeMap,
+          onUpdated,
+          errors,
         };
-      }
-      else if (isArrayInput(config)) {
+        return props;
+      } else if (isArrayInput(config)) {
         return {
           config: config.config,
+          path: currentPath,
         };
       }
       return {};
