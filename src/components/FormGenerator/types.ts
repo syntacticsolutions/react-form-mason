@@ -1,8 +1,4 @@
 import { Option } from "../../models/common";
-import Input from "../Input/Input";
-import { Select } from "../Select/Select";
-import { FormGenerator } from "./FormGenerator";
-export { Arry } from "../Array/Arr";
 
 export enum InputTypes {
   STRING = "STRING",
@@ -10,13 +6,6 @@ export enum InputTypes {
   OBJECT = "OBJECT",
   ARRAY = "ARRAY",
 }
-
-export const inputMap = {
-  [InputTypes.STRING]: Input,
-  [InputTypes.SELECT]: Select,
-  [InputTypes.OBJECT]: FormGenerator,
-  // [InputTypes.ARRAY]: Arry,
-};
 
 export interface FormGeneratorProps<T extends Record<string, any>> {
   inputTypeMap?: Record<InputTypes, React.FC<any>>;
