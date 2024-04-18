@@ -9,7 +9,7 @@ const { useFormErrors } = require("./dist/hooks/useFormErrors/useFormErrors");
 const validators = require("./dist/hooks/useFormErrors/validators");
 const { useFormData } = require("./dist/hooks/useFormData");
 
-export default {
+module.exports = {
   Button,
   Input,
   Select,
@@ -20,11 +20,4 @@ export default {
   useFormData,
 };
 
-exports.Button = Button;
-exports.Dropdown = Dropdown;
-exports.Select = Select;
-exports.Input = Input;
-exports.FormGenerator = FormGenerator;
-exports.useFormErrors = useFormErrors;
-exports.validators = validators;
-exports.useFormData = useFormData;
+
