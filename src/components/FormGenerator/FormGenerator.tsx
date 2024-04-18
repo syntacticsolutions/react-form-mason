@@ -1,7 +1,8 @@
 import React from "react";
 import { useFormData } from "../../hooks/useFormData";
-import { FormGeneratorProps, inputMap } from "./types";
+import { FormGeneratorProps } from "./types";
 import { usePropGetter } from "./hooks/usePropGetter";
+import { inputMap } from "./constants";
 import _ from "lodash";
 
 export const FormGenerator = ({
