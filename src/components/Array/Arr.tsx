@@ -1,3 +1,5 @@
-export const Arr = () => {
-  return "arr";
+
+
+export const Arry = () => {
+  return <div>arr</div>;
 };

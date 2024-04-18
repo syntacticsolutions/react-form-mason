@@ -2,7 +2,7 @@ import { Option } from "../../models/common";
 import Input from "../Input/Input";
 import { Select } from "../Select/Select";
 import { FormGenerator } from "./FormGenerator";
-export { Arr } from "../Array/Arr";
+export { Arry } from "../Array/Arr";
 
 export enum InputTypes {
   STRING = "STRING",
@@ -15,12 +15,12 @@ export const inputMap = {
   [InputTypes.STRING]: Input,
   [InputTypes.SELECT]: Select,
   [InputTypes.OBJECT]: FormGenerator,
-  [InputTypes.ARRAY]: Arr,
+  // [InputTypes.ARRAY]: Arry,
 };
 
 export interface FormGeneratorProps<T extends Record<string, any>> {
   inputTypeMap?: Record<InputTypes, React.FC<any>>;
-  config: FGConfig<any>[];
+  config: FGConfig[];
   onUpdated?: (formData: T) => void;
   errors?: Record<string, boolean>;
   formState: T;

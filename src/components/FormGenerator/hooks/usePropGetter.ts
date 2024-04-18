@@ -46,6 +46,7 @@ export const usePropGetter = (
           onUpdated,
           errors,
         };
+        console.log(props)
         return props;
       } else if (isArrayInput(config)) {
         return {
