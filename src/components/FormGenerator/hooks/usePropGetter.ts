@@ -9,6 +9,7 @@ import {
   FormGeneratorProps,
 } from "../types";
 import { SelectProps } from "../../Select/types";
+import _ from 'lodash';
 
 export const usePropGetter = (
   state: Record<string, any>,
@@ -20,27 +21,28 @@ export const usePropGetter = (
 ) => {
   const getComponentSpecificProps = useCallback(
     (config: FGConfig) => {
+      const path = currentPath ? currentPath + '.' + config.path : config.path
       if (isStringInput(config)) {
         const props: DetailedHTMLProps<
           InputHTMLAttributes<HTMLInputElement>,
           HTMLInputElement
         > = {
-          onChange: setInput(config.path),
-          value: state[config.path],
+          onChange: setInput(path),
+          value: _.get(state, path),
           ...config,
         };
         return props;
       } else if (isSelectInput(config)) {
         const props: SelectProps = {
-          onChange: setSelect(config.path),
-          value: state[config.path],
+          onChange: setSelect(path),
+          value: _.get(state, path),
           ...config,
         };
         return props;
       } else if (isObjectInput(config)) {
         const props: FormGeneratorProps<any> = {
           config: config.config,
-          runningPath: currentPath + config.path,
+          runningPath: currentPath + path,
           formState: state,
           inputTypeMap,
           onUpdated,

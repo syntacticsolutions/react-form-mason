@@ -3,7 +3,7 @@ import { useFormData } from "../../hooks/useFormData";
 import { FormGeneratorProps, InputTypes } from "./types";
 import { usePropGetter } from "./hooks/usePropGetter";
 import _ from "lodash";
-import { Input } from "../Input/Input";
+import { FGInput } from "../Input/Input";
 import { Select } from "../Select/Select";
 
 export const FormGenerator = ({
@@ -42,7 +42,7 @@ export const FormGenerator = ({
 };
 
 export const inputMap = {
-  [InputTypes.STRING]: Input,
+  [InputTypes.STRING]: FGInput,
   [InputTypes.SELECT]: Select,
   [InputTypes.OBJECT]: FormGenerator,
   // [InputTypes.ARRAY]: Arry,

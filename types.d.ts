@@ -1,22 +1,22 @@
 import React from "react";
-import { ButtonProps } from "./src/components/Button/types";
-import { SelectProps } from "./src/components/Select/types";
-import { DropdownProps } from "./src/components/Dropdown/types";
-import { FormGeneratorProps } from "./src/components/FormGenerator/types";
+import { ButtonProps } from "./src/components/Button/types.js";
+import { SelectProps } from "./src/components/Select/types.js";
+import { DropdownProps } from "./src/components/Dropdown/types.js";
+import { FormGeneratorProps } from "./src/components/FormGenerator/types.js";
 
-import { ValidatorFn } from "./src/models/common";
+import { ValidatorFn } from "./src/hooks/useFormErrors/types";
 
-import { useFormErrors as ErrorsHook } from "./dist/hooks/useFormErrors/useFormErrors";
+import { useFormErrors as ErrorsHook } from "./dist/hooks/useFormErrors/useFormErrors.js";
 
 import { useFormData as FormDataHook } from "./dist/index.js";
 
-export * from "./src/components/Button/types";
-export * from "./src/components/Dropdown/types";
-export * from "./src/components/FormGenerator/types";
-export * from "./src/components/FormGenerator/constants";
-export * from "./src/components/Select/types";
-export * from "./src/hooks/useFormErrors/types";
-export * from "./src/models/common";
+export * from "./src/components/Button/types.js";
+export * from "./src/components/Dropdown/types.js";
+export * from "./src/components/FormGenerator/types.js";
+export { inputMap } from "./src/components/FormGenerator/FormGenerator.js";
+export * from "./src/components/Select/types.js";
+export * from "./src/hooks/useFormErrors/types.js";
+export * from "./src/models/common.js";
 
 export class Button extends React.Component<ButtonProps> {}
 

@@ -1,0 +1,22 @@
+.formgen-input-container {
+    display: inline-block;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px; /* You can adjust this as needed */
+  }
+  
+  .formgen-input-container input {
+    height: 32px;
+    padding: 4px 11px;
+    width: 100%;
+    border: 1px solid #d9d9d9; /* Light grey border */
+    border-radius: 2px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+    outline: none; /* Removes the outline */
+  }
+  
+  .formgen-input-container input:focus {
+    border-color: #40a9ff; /* Blue border on focus */
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2); /* Light blue glow */
+  }

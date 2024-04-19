@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useCallback } from "react";
 import { Option } from "../models/common";
-
-console.log({version: React.version, useCallback});
+import _ from "lodash";
 
 export function useFormData<T = Record<string, any>>(
   data: T,
@@ -9,10 +8,8 @@ export function useFormData<T = Record<string, any>>(
 ) {
   const setInput = useCallback(
     (path: string) => (ev: ChangeEvent<HTMLInputElement>) => {
-      const newData = {
-        ...data,
-        [path]: ev.target.value,
-      };
+      const newData = _.cloneDeep(data);
+      _.set(newData as any, path, ev.target.value);
       onChange(newData);
     },
     [data]
@@ -20,10 +17,8 @@ export function useFormData<T = Record<string, any>>(
 
   const setSelect = useCallback(
     (path: string) => (opt: Option) => {
-      const newData = {
-        ...data,
-        [path]: opt,
-      };
+      const newData = _.cloneDeep(data);
+      _.set(newData as any, path, opt);
       onChange(newData);
     },
     [data]

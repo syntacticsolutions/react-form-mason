@@ -7,7 +7,7 @@ import { Option } from "../../models/common";
 export function Dropdown({
   list = [],
   visible = false,
-  style = { top: "-20px" },
+  style = {},
   onSelected,
   onClosed,
 }: DropdownProps) {

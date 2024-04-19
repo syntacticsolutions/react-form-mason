@@ -1,10 +1,15 @@
 import React, { ChangeEvent, useState } from "react";
-import {Dropdown} from "../Dropdown/Dropdown";
-import {Input} from "../Input/Input";
+import { Dropdown } from "../Dropdown/Dropdown";
+import { FGInput } from "../Input/Input";
 import { SelectProps } from "./types";
 import { Option } from "../../models/common";
 
-export const Select = ({ onChange, options = [], value, placeholder }: SelectProps) => {
+export const Select = ({
+  onChange,
+  options = [],
+  value,
+  placeholder,
+}: SelectProps) => {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -26,7 +31,7 @@ export const Select = ({ onChange, options = [], value, placeholder }: SelectPro
 
   return (
     <div className="formgen-select">
-      <Input
+      <FGInput
         type="text"
         placeholder={placeholder}
         onChange={handleSearchChange}
@@ -36,14 +41,15 @@ export const Select = ({ onChange, options = [], value, placeholder }: SelectPro
           ev.stopPropagation();
         }}
         onFocus={() => setVisible(true)}
-        value={search || value?.label }
-      />
-      <Dropdown
-        visible={visible}
-        list={filteredOptions}
-        onSelected={handleSelected}
-        onClosed={() => setVisible(false)}
-      />
+        value={search || value?.label}
+      >
+        <Dropdown
+          visible={visible}
+          list={filteredOptions}
+          onSelected={handleSelected}
+          onClosed={() => setVisible(false)}
+        />
+      </FGInput>
     </div>
   );
 };
