@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useFormData } from "../../hooks/useFormData";
 import { FormGeneratorProps, InputTypes } from "./types";
 import { usePropGetter } from "./hooks/usePropGetter";
 import _ from "lodash";
 import { FGInput } from "../Input/Input";
 import { Select } from "../Select/Select";
+import { useFormErrors } from "../../hooks";
+import { recursivelyMapValidators } from "./utils";
 
 export const FormGenerator = ({
   config,
   inputTypeMap,
   onUpdated = (data: Record<string, any>) => {},
-  errors = {},
   formState,
-  runningPath = "",
+  basePath = ""
 }: FormGeneratorProps<any>) => {
   const { ...setters } = useFormData(formState, onUpdated);
+
+  const errorValidatorMap = useMemo(() => recursivelyMapValidators(config, basePath), []);
+
+  const errors = useFormErrors(formState, errorValidatorMap);
 
   const getComponentSpecificProps = usePropGetter(
     formState,
     setters,
-    runningPath,
+    basePath,
     inputTypeMap || inputMap,
     onUpdated,
     errors

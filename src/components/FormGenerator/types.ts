@@ -1,10 +1,12 @@
+import { ValidatorFn, ValidatorFuncParams } from "../../hooks/useFormErrors/types";
+import validators from "../../hooks/useFormErrors/validators";
 import { Option } from "../../models/common";
 
 export enum InputTypes {
   STRING = "STRING",
   SELECT = "SELECT",
   OBJECT = "OBJECT",
-  ARRAY = "ARRAY",
+  // ARRAY = "ARRAY",
 }
 
 export interface FormGeneratorProps<T extends Record<string, any>> {
@@ -13,14 +15,15 @@ export interface FormGeneratorProps<T extends Record<string, any>> {
   onUpdated?: (formData: T) => void;
   errors?: Record<string, boolean>;
   formState: T;
-  runningPath: string
+  basePath?: string
 }
 
-export type FGConfig = InputConfig | SelectConfig | ObjectConfig | ArrayConfig;
+export type FGConfig = InputConfig | SelectConfig | ObjectConfig; // | ArrayConfig;
 
 type BaseConfig = {
   path: string;
   label: string;
+  isValid?: keyof typeof validators
 };
 
 export interface InputConfig extends BaseConfig {
@@ -38,10 +41,13 @@ export interface ObjectConfig {
   config: FGConfig[];
   path: string;
   type: InputTypes.OBJECT;
+  label: string;
 }
 
-export interface ArrayConfig {
-  config: FGConfig[];
-  path: string;
-  type: InputTypes.ARRAY;
-}
+// export interface ArrayConfig {
+//   config: FGConfig[];
+//   path: string;
+//   type: InputTypes.ARRAY;
+// }
+
+export type ErrorValidatorMap = Record<string, (...funcs: ValidatorFn[]) => (initialValue: ValidatorFuncParams) => Promise<ValidatorFuncParams>>
