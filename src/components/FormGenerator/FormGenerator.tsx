@@ -1,9 +1,10 @@
 import React from "react";
 import { useFormData } from "../../hooks/useFormData";
-import { FormGeneratorProps } from "./types";
+import { FormGeneratorProps, InputTypes } from "./types";
 import { usePropGetter } from "./hooks/usePropGetter";
-import { inputMap } from "./constants";
 import _ from "lodash";
+import { Input } from "../Input/Input";
+import { Select } from "../Select/Select";
 
 export const FormGenerator = ({
   config,
@@ -38,6 +39,13 @@ export const FormGenerator = ({
       ))}
     </div>
   );
+};
+
+export const inputMap = {
+  [InputTypes.STRING]: Input,
+  [InputTypes.SELECT]: Select,
+  [InputTypes.OBJECT]: FormGenerator,
+  // [InputTypes.ARRAY]: Arry,
 };
 
 const InputWrapper = ({

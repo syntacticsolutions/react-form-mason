@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { forkJoin } from "rxjs";
+import { ObservableInput, forkJoin } from "rxjs";
 import _ from "lodash";
 import { useSubscription } from "observable-hooks";
 import { removeEmpty, runValidatorsOn } from "./utils";
@@ -13,12 +13,17 @@ export const useFormErrors = (
 
   const errors$ = useMemo(() => {
     const validators = runValidatorsOn(errorValidatorMap, formData);
-    return forkJoin(validators);
+    return forkJoin<Record<string, ObservableInput<ValidatorFuncParams>>>(
+      validators
+    );
   }, [formData]);
 
-  useSubscription(errors$, (errs: Record<string, ValidatorFuncParams>) => {
-    setErrors(removeEmpty(errs));
-  });
+  useSubscription<Record<string, ValidatorFuncParams>>(
+    errors$,
+    (errs: Record<string, ValidatorFuncParams>) => {
+      setErrors(removeEmpty(errs));
+    }
+  );
 
   return { errors };
 };

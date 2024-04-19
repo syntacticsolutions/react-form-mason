@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
-import Dropdown from "../Dropdown/Dropdown";
-import Input from "../Input/Input";
+import {Dropdown} from "../Dropdown/Dropdown";
+import {Input} from "../Input/Input";
 import { SelectProps } from "./types";
 import { Option } from "../../models/common";
 

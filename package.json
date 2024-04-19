@@ -2,10 +2,11 @@
   "name": "react-form-mason",
   "version": "1.9.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "types.d.ts",
   "scripts": {
-    "build": "babel src --out-dir dist --extensions '.ts,.tsx' --source-maps inline",
+    "build": "babel src --out-dir dist --extensions '.ts,.tsx,.js' --copy-files",
     "update:package": "npm run build && npm version minor && npm publish"
   },
   "files": [
@@ -34,7 +35,6 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "@types/lodash": "^4.17.0",
-    "@types/react": "^18.2.79",
-    "typescript": "^5.4.5"
+    "@types/react": "^18.2.79"
   }
 }

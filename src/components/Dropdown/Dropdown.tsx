@@ -4,7 +4,7 @@ import { useAccessibleDropdown } from "./hooks/useAccessibleDropdown";
 import { useClickAwayHandler } from "../../hooks/useClickAwayHandler";
 import { Option } from "../../models/common";
 
-function Dropdown({
+export function Dropdown({
   list = [],
   visible = false,
   style = { top: "-20px" },
@@ -38,5 +38,3 @@ function Dropdown({
     </div>
   );
 }
-
-export default Dropdown;

@@ -47,7 +47,7 @@ export const validate = (...funcs: ValidatorFn[]) => {
       const error = await func(previousValue);
 
       // If the validator returns an object, use it, otherwise pass previousValue
-      return error ? { error } : previousValue;
+      return error ? { error } as ValidatorFuncParams : previousValue;
     }, Promise.resolve(initialValue));
   };
 };

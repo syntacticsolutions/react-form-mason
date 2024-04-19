@@ -8,7 +8,7 @@ import { ValidatorFn } from "./src/models/common";
 
 import { useFormErrors as ErrorsHook } from "./dist/hooks/useFormErrors/useFormErrors";
 
-import { useFormData as FormDataHook } from "./dist/hooks/useFormData";
+import { useFormData as FormDataHook } from "./dist/index.js";
 
 export * from "./src/components/Button/types";
 export * from "./src/components/Dropdown/types";
